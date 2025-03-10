@@ -1,0 +1,9 @@
+Name: libecpg
+Description: PostgreSQL libecpg library
+Url: http://www.postgresql.org/
+Version: 10.0 TBase V2
+Requires: 
+Requires.private: libpq libpgtypes
+Cflags: -I/opt/xiaosongyuan/install/tbase_bin_v2.0/include
+Libs: -L/opt/xiaosongyuan/install/tbase_bin_v2.0/lib -lecpg
+Libs.private: -L/opt/xiaosongyuan/install/openssl-1.1.1/lib -lm
