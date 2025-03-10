@@ -74,6 +74,8 @@
 #include "port/atomics/arch-ppc.h"
 #elif defined(__hppa) || defined(__hppa__)
 #include "port/atomics/arch-hppa.h"
+#elif defined(__riscv) && defined(__riscv_xlen) && (__riscv_xlen == 64)
+#include "port/atomics/arch-rv64.h"
 #endif
 
 /*

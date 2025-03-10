@@ -1,0 +1,26 @@
+cat: ../../src/interfaces/libpq/objfiles.txt: No such file or directory
+/usr/bin/ld: access/transam/xact.o: in function `CommitTransactionCommand':
+/opt/xiaosongyuan/TBase/src/backend/access/transam/xact.c:4441: undefined reference to `is_ddl_leader_cn'
+/usr/bin/ld: libpq/be-secure-openssl.o: in function `be_tls_open_server':
+/opt/xiaosongyuan/TBase/src/backend/libpq/be-secure-openssl.c:534: undefined reference to `SSL_get_peer_certificate'
+/usr/bin/ld: libpq/be-secure-openssl.o: in function `my_BIO_s_socket':
+/opt/xiaosongyuan/TBase/src/backend/libpq/be-secure-openssl.c:858: undefined reference to `ERR_put_error'
+/usr/bin/ld: libpq/be-secure-openssl.o: in function `my_SSL_set_fd':
+/opt/xiaosongyuan/TBase/src/backend/libpq/be-secure-openssl.c:871: undefined reference to `ERR_put_error'
+/usr/bin/ld: tcop/utility.o: in function `ProcessUtilityPre':
+/opt/xiaosongyuan/TBase/src/backend/tcop/utility.c:932: undefined reference to `is_ddl_leader_cn'
+/usr/bin/ld: tcop/utility.o: in function `standard_ProcessUtility':
+/opt/xiaosongyuan/TBase/src/backend/tcop/utility.c:2352: undefined reference to `is_ddl_leader_cn'
+/usr/bin/ld: /opt/xiaosongyuan/TBase/src/backend/tcop/utility.c:2555: undefined reference to `is_ddl_leader_cn'
+/usr/bin/ld: /opt/xiaosongyuan/TBase/src/backend/tcop/utility.c:2563: undefined reference to `is_ddl_leader_cn'
+/usr/bin/ld: /opt/xiaosongyuan/TBase/src/backend/tcop/utility.c:2909: undefined reference to `is_ddl_leader_cn'
+/usr/bin/ld: tcop/utility.o:/opt/xiaosongyuan/TBase/src/backend/tcop/utility.c:3791: more undefined references to `is_ddl_leader_cn' follow
+/usr/bin/ld: ../../src/interfaces/libpq/fe-secure-openssl.o: in function `open_client_SSL':
+/opt/xiaosongyuan/TBase/src/interfaces/libpq/fe-secure-openssl.c:1305: undefined reference to `SSL_get_peer_certificate'
+/usr/bin/ld: ../../src/interfaces/libpq/fe-secure-openssl.o: in function `my_BIO_s_socket':
+/opt/xiaosongyuan/TBase/src/interfaces/libpq/fe-secure-openssl.c:1657: undefined reference to `ERR_put_error'
+/usr/bin/ld: /opt/xiaosongyuan/TBase/src/interfaces/libpq/fe-secure-openssl.c:1658: undefined reference to `ERR_put_error'
+collect2: error: ld returned 1 exit status
+make[2]: *** [Makefile:82: postgres] Error 1
+make[1]: *** [Makefile:38: all-backend-recurse] Error 2
+make: *** [GNUmakefile:11: all-src-recurse] Error 2

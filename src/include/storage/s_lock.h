@@ -363,6 +363,36 @@ tas(volatile slock_t *lock)
 
 #endif     /* __s390__ || __s390x__ */
 
+#if defined(__riscv) && defined(__riscv_xlen) && (__riscv_xlen == 64)
+#ifdef HAVE_GCC__SYNC_INT32_TAS
+#define HAS_TEST_AND_SET
+
+typedef int slock_t;
+
+#define TAS(lock) tas(lock)
+
+static __inline__ int
+tas(volatile slock_t *lock)
+{
+    /* 利用 gcc 内置的原子测试并设置函数 */
+    return __sync_lock_test_and_set(lock, 1);
+}
+
+/* 当检测到锁已经被占用时，可以选择先做个非锁定测试 */
+#define TAS_SPIN(lock)    (*(lock) ? 1 : TAS(lock))
+
+#define S_UNLOCK(lock) __sync_lock_release(lock)
+
+#define SPIN_DELAY() spin_delay()
+
+static __inline__ void
+spin_delay(void)
+{
+    /* 对 RISC-V 使用简单的 nops 延迟 */
+    __asm__ __volatile__("nop" ::: "memory");
+}
+#endif  /* HAVE_GCC__SYNC_INT32_TAS */
+#endif  /* defined(__riscv) && (__riscv_xlen == 64) */
 
 #if defined(__sparc__)        /* Sparc */
 /*
