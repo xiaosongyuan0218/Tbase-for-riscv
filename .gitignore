@@ -6,6 +6,9 @@
 *.o
 /.idea
 .*/.DS_Store
+/build.log
+/config.log
+/config.status
 /src/.idea/misc.xml
 /src/.idea/modules.xml
 /src/.idea/other.xml
